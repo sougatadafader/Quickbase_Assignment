@@ -24,6 +24,14 @@ import org.apache.commons.lang3.tuple.Pair;
  */
 public class Main {
 	
+	/* Function Name: getMapfromResultSet
+	 * 
+	 * Receives a ResultSet
+	 * and returns a 
+	 * Map in <String,Integer> format
+	 * where the String represents a Country and the Integer is the population
+	 * */
+	
 	public static Map<String,Integer> getMapfromResultSet(ResultSet rs) throws SQLException
 	{
 		Map<String,Integer> dbResult = new HashMap<String,Integer>();
@@ -34,6 +42,13 @@ public class Main {
 		return dbResult;
 	}
 	
+	
+	/* Function Name: getMapFromConList
+	 * Receives a List fetched from the concrete class
+	 * and returns a 
+	 * Map in <String,Integer> format
+	 * where the String represents a Country and the Integer is the population
+	 * */
 	public static Map<String,Integer> getMapFromConList()
 	{
 		ConcreteStatService con = new ConcreteStatService();
@@ -56,6 +71,13 @@ public class Main {
 		return concreteMap;
 	}
 	
+	/* Function Name: aggregatedList
+	 * Receives two Maps, both containing Country and Population entries
+	 * and returns a 
+	 * Map in <String,Integer> format
+	 * which is aggregated. The resultant map contains a key which is a 
+	 * String representing a Country and an Integer representing population
+	 * */
 	public static Map<String,Integer> aggregatedList(Map<String,Integer> dbMap, Map<String,Integer> conMap)
 	{
 		Map<String,Integer> aggOutput = new HashMap<String,Integer>(dbMap);
@@ -76,6 +98,10 @@ public class Main {
 		return aggOutput;
 	}
 	
+	
+	/* Function Name: displayMap
+	 * An utility method to display the values inside a Map.
+	 * */
 	public static void displayMap(Map<String,Integer> map) {
 		System.out.println("===========C O U N T R Y===========================P O P U L A T I O N=======================");
 		for (Map.Entry<String,Integer> entry : map.entrySet())  
